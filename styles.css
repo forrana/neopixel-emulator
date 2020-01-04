@@ -1,0 +1,13 @@
+.LED {
+  border: 1px solid black;
+  width: 1em;
+  height: 1em;
+}
+
+main#App{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  height: 90vh;
+}
