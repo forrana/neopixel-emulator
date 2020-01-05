@@ -2,9 +2,12 @@
   border: 1px solid black;
   width: 1em;
   height: 1em;
+  margin: 0.05em;
+  background-color: var(--bg-color);
+
 }
 
-main#App{
+.led-panel{
   display: flex;
   justify-content: center;
   align-self: center;

@@ -11,7 +11,24 @@
 </head>
 <body>
   <main id="App">
-    <div class="LED"></div>
+    <button v-on:click="startEmulation" :disabled='isPlaying'>Play</button>
+    <button v-on:click="pauseEmulation" :disabled='!isPlaying'>Pause</button>
+    <button v-on:click="stopEmulation"  :disabled='!isPlaying'>Stop</button>
+    delay: {{delay}} ms
+    current frame: {{activeFrameIndex}}
+    <section class="led-panel">
+      <div>
+        <div class="row" v-for="(row, rowIndex) in activeFrame">
+          <div class="LED"
+            v-for="(pixel, pixelIndex) in row"
+            v-bind:id="'pixel-'+rowIndex+'-'+pixelIndex"
+            v-bind:style="{'--bg-color': pixel}"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+  <script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>
