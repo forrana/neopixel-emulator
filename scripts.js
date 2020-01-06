@@ -2,9 +2,9 @@ var app = new Vue({
   el: '#app',
   data: {
     frames: [
-      [["#ff0000", "#00ff00", "#0000ff"], ["#000000", "#000000", "#000000"]],
-      [["#000000", "#ff0000", "#00ff00"], ["#0000ff", "#000000", "#000000"]],
-      [["#000000", "#000000", "#ff0000"], ["#00ff00", "#0000ff", "#000000"]],
+      [["#ff0000", "#00ff00", "#0000ff"], ["#ff0000", "#00ff00", "#0000ff"]],
+      [["#000000", "#ff0000", "#00ff00"], ["#000000", "#ff0000", "#00ff00"]],
+      [["#000000", "#000000", "#ff0000"], ["#000000", "#000000", "#ff0000"]],
       [["#000000", "#000000", "#000000"], ["#ff0000", "#00ff00", "#0000ff"]],
     ],
     delay: 500,
@@ -34,6 +34,15 @@ var app = new Vue({
       this.activeFrameIndex = 0;
       clearInterval(this.intervalId);
       this.intervalId = null;
-    }
+    },
+    changeRowsAmount: function () {
+      
+    },
+    changeColumnsAmount: function () {
+
+    },
+    changeFramesAmount: function () {
+
+    },
   },
 })

@@ -4,13 +4,52 @@
   height: 1em;
   margin: 0.05em;
   background-color: var(--bg-color);
-
 }
 
-.led-panel{
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.led-panel {
   display: flex;
   justify-content: center;
   align-self: center;
   align-items: center;
   height: 90vh;
+  width: 49vw;
+}
+
+.programming-panel {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  height: 90vh;
+  width: 49vw;
+}
+
+.panels {
+  display: flex;
+  margin-left: 1vw;
+}
+
+.row {
+  display: flex;
+}
+
+.color-input {
+  flex: 1;
+  width: 8ch;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.number-input {
+  width: 5ch;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.control-panel {
+  width: 98vw;
+  margin-left: 1vw;
 }

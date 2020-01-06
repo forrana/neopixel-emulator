@@ -11,22 +11,49 @@
 </head>
 <body>
   <main id="App">
-    <button v-on:click="startEmulation" :disabled='isPlaying'>Play</button>
-    <button v-on:click="pauseEmulation" :disabled='!isPlaying'>Pause</button>
-    <button v-on:click="stopEmulation"  :disabled='!isPlaying'>Stop</button>
-    delay: {{delay}} ms
-    current frame: {{activeFrameIndex}}
-    <section class="led-panel">
-      <div>
+    <section class="control-panel">
+      <section class="button-group">
+        <button v-on:click="startEmulation" :disabled='isPlaying'>Play</button>
+        <button v-on:click="pauseEmulation" :disabled='!isPlaying'>Pause</button>
+        <button v-on:click="stopEmulation"  :disabled='!isPlaying'>Stop</button>
+      </section>
+      <section class="parametrs-group">
+        delay: {{delay}} ms
+        current frame: {{activeFrameIndex}}
+      </section>
+    </section>
+    <section class="panels">
+      <section class="programming-panel card">
+        <div class="input-group">
+          Rows: <input type="number" class="number-input" v-bind:value="activeFrame.length" max="999"/>
+        </div>
+        <div class="input-group">
+          Columns: <input type="number" class="number-input" v-bind:value="activeFrame[0].length" max="999"/>
+        </div>
+        <div class="input-group">
+          Frames: <input type="number" class="number-input" v-bind:value="frames.length" max="999"/>
+        </div>
+
         <div class="row" v-for="(row, rowIndex) in activeFrame">
-          <div class="LED"
-            v-for="(pixel, pixelIndex) in row"
-            v-bind:id="'pixel-'+rowIndex+'-'+pixelIndex"
-            v-bind:style="{'--bg-color': pixel}"
-          >
+          <input type="color" v-for="(pixel, pixelIndex) in row" v-model="row[pixelIndex]">
+        </div>
+        <div class="row" v-for="(row, rowIndex) in activeFrame">
+          <input class="color-input" type="text" v-for="(pixel, pixelIndex) in row" v-model="row[pixelIndex]">
+        </div>
+        <input type="range" v-model="activeFrameIndex" v-bind:max="frames.length - 1"/>
+      </section>
+      <section class="led-panel card">
+        <div>
+          <div class="row" v-for="(row, rowIndex) in activeFrame">
+            <div class="LED"
+              v-for="(pixel, pixelIndex) in row"
+              v-bind:id="'pixel-'+rowIndex+'-'+pixelIndex"
+              v-bind:style="{'--bg-color': pixel}"
+            >
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   </main>
   <script type="text/javascript" src="scripts.js"></script>
