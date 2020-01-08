@@ -13,9 +13,9 @@
   <main id="App">
     <section class="control-panel">
       <section class="button-group">
-        <button v-on:click="startEmulation" :disabled='isPlaying'>Play</button>
-        <button v-on:click="pauseEmulation" :disabled='!isPlaying'>Pause</button>
-        <button v-on:click="stopEmulation"  :disabled='!isPlaying'>Stop</button>
+        <button @click="startEmulation" :disabled='isPlaying'>Play</button>
+        <button @click="pauseEmulation" :disabled='!isPlaying'>Pause</button>
+        <button @click="stopEmulation"  :disabled='!isPlaying'>Stop</button>
       </section>
       <section class="parametrs-group">
         delay: {{delay}} ms
@@ -29,13 +29,13 @@
         </span>
         <section>
           <span class="form-group">
-            Rows: <input type="number" class="number-input" v-bind:value="activeFrame.length" max="999"/>
+            Rows: <input type="number" class="number-input" v-bind:value="activeFrame.length" @change="changeRowsAmount" max="999" min="1"/>
           </span>
           <span class="form-group">
-            Columns: <input type="number" class="number-input" v-bind:value="activeFrame[0].length" max="999"/>
+            Columns: <input type="number" class="number-input" v-bind:value="activeFrame[0].length" @change="changeColumnsAmount" max="999" min="1"/>
           </span>
           <span class="form-group">
-            Frames: <input type="number" class="number-input" v-bind:value="frames.length" max="999"/>
+            Frames: <input type="number" class="number-input" v-bind:value="frames.length" @change="changeFramesAmount" max="999" min="1"/>
           </span>
         </section>
         <div class="row" v-for="(row, rowIndex) in activeFrame">

@@ -9,7 +9,9 @@ var app = new Vue({
     ],
     delay: 500,
     intervalId: null,
-    activeFrameIndex: 0
+    activeFrameIndex: 0,
+    frameWidth: 3,
+    frameHeight: 2,
   },
   computed: {
     activeFrame: function () {
@@ -35,14 +37,27 @@ var app = new Vue({
       clearInterval(this.intervalId);
       this.intervalId = null;
     },
-    changeRowsAmount: function () {
-      
+    changeRowsAmount: function (event) {
+      let newAmount = event.target.value
+
     },
     changeColumnsAmount: function () {
+      let newAmount = event.target.value
 
     },
     changeFramesAmount: function () {
+      const newAmountDelta = event.target.value - this.frames.length;
+      const lastIndex = this.frames.length - 1;
 
+      if(newAmountDelta == 0) return;
+      if(newAmountDelta > 0) {
+        const newFrames = Array(newAmountDelta).fill(Array(this.frameHeight).fill(Array(this.frameWidth).fill("#000000")))
+        this.frames = this.frames.concat(newFrames);
+        this.activeFrameIndex = this.activeFrameIndex == lastIndex ? this.frames.length - 1 : this.activeFrameIndex;
+      } else {
+        this.frames.splice(this.frames.length + newAmountDelta, -newAmountDelta);
+        this.activeFrameIndex = this.activeFrameIndex == lastIndex ? this.frames.length - 1 : this.activeFrameIndex;
+      }
     },
   },
 })
