@@ -39,11 +39,17 @@ var app = new Vue({
     },
     changeRowsAmount: function (event) {
       let newAmount = event.target.value
-
+      this.frameHeight = +newAmount;
+      console.log(newAmount)
+      console.log(this.frames.length)
+      this.frames = Array(this.frames.length).fill(Array(this.frameHeight).fill(Array(this.frameWidth).fill("#000000")))
     },
     changeColumnsAmount: function () {
       let newAmount = event.target.value
-
+      this.frameWidth = +newAmount;
+      console.log(newAmount)
+      console.log(this.frames.length)
+      this.frames = Array(this.frames.length).fill(Array(this.frameHeight).fill(Array(this.frameWidth).fill("#000000")))
     },
     changeFramesAmount: function () {
       const newAmountDelta = event.target.value - this.frames.length;
